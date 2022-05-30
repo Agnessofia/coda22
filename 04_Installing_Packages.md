@@ -17,7 +17,7 @@ process.
 
 ![Package screen](./images/01.jpg)
 
-![Installation screen](./images/02.png){width=50%}
+![Installation screen](./images/02.png)
 
 # Using command line
 
