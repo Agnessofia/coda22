@@ -17,8 +17,15 @@ This course covers some tools for corpus and discourse analysis using **R**'s la
 Each markdown file (*\*.md*) brings a set of comments and commands regarding part of this workshop, while `R` files (*\*.R*) are the actual scripts for the exercises we are going to perform.
 
 1.  Brief introduction to R IDE
+
+    -   [01_R.mb](01_R.mb): Installation of R
+
+    -   [02_IDE.md](02_IDE.md): Installation of IDEs and their functions
+
 2.  Brief introduction to `R` syntax
-3.  Collecting and savying Twitter data
+
+    -   [03_basics](03_basics.md): Some basic R Syntax
+
+3.  Collecting and saving Twitter data
+
 4.  Visual representations and some analysis
-
-
