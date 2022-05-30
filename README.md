@@ -18,7 +18,7 @@ Each markdown file (*\*.md*) brings a set of comments and commands regarding par
 
 1.  Brief introduction to R IDE
 
-    -   [01_R.mb](01_R.mb): Installation of R
+    -   [01_R.md](01_R.md): Installation of R
 
     -   [02_IDE.md](02_IDE.md): Installation of IDEs and their functions
 
