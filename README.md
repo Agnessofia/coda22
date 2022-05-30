@@ -2,6 +2,10 @@ By Rodrigo Esteves de Lima Lopes *Campinas State University* [rll307\@unicamp.br
 
 ------------------------------------------------------------------------
 
+<p style="text-align: center;">
+![](images/flyer2.jpeg)
+</p>
+
 # Introduction
 
 In this workshop [Marcelo Buzato](mailto:mbuzato@unicamp.br) and [I](mailto:rll307@unicamp.br) are going to discuss some strategies of Twitter text analysis. It was produced in order to assist colleagues who work in the area of Corpus Linguistics and Systemic Functional Linguistics, as a way to use R in their research. It is part of my [CNPq](http://www.cnpq.br)-Funded project and seeks to make corpus tools and `R` accessible.
