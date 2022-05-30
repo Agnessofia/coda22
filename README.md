@@ -1,6 +1,6 @@
 # Introduction
 
-Rodrigo Esteves de Lima Lopes
+By Rodrigo Esteves de Lima Lopes
 *Campinas State University*
 [rll307\@unicamp.br](mailto:rll307@unicamp.br)
 
