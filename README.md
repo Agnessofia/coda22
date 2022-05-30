@@ -2,9 +2,11 @@ By Rodrigo Esteves de Lima Lopes *Campinas State University* [rll307\@unicamp.br
 
 ------------------------------------------------------------------------
 
-<p style="text-align: center;">
-![](images/flyer2.jpeg)
+<p align="center">
+  <img src="images/flyer2.jpeg" />
 </p>
+
+
 
 # Introduction
 
