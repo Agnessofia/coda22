@@ -1,4 +1,4 @@
-By Rodrigo Esteves de Lima Lopes *Campinas State University* [rll307\@unicamp.br](mailto:rll307@unicamp.br)
+By Rodrigo Esteves de Lima Lopes *University of Campinas* [rll307\@unicamp.br](mailto:rll307@unicamp.br)
 
 ------------------------------------------------------------------------
 
@@ -6,11 +6,9 @@ By Rodrigo Esteves de Lima Lopes *Campinas State University* [rll307\@unicamp.br
   <img src="images/flyer2.jpeg" />
 </p>
 
-
-
 # Introduction
 
-In this workshop [Marcelo Buzato](mailto:mbuzato@unicamp.br) and [I](mailto:rll307@unicamp.br) are going to discuss some strategies of Twitter text analysis. It was produced in order to assist colleagues who work in the area of Corpus Linguistics and Systemic Functional Linguistics, as a way to use R in their research. It is part of my [CNPq](http://www.cnpq.br)-Funded project and seeks to make corpus tools and `R` accessible.
+In this workshop [Marcelo Buzato](mailto:mbuzato@unicamp.br) and [I](mailto:rll307@unicamp.br) are going to discuss some strategies of Twitter text analysis. It was produced in order to assist colleagues who work in the area of Corpus Linguistics and Systemic Functional Linguistics, as a way to use R in their research. It is part of my [CNPq](http://www.cnpq.br) - project and seeks to make corpus tools and `R` accessible.
 
 Please feel free to help in the codes and tutorial improvement. If you see any mistake or possibility for code rewriting, please let us know.
 
@@ -36,4 +34,7 @@ Each markdown file (*\*.md*) brings a set of comments and commands regarding par
 
 3.  Collecting and saving Twitter data
 
+    -   [05_rtweet_E1](05_rtweet_E1.md): Data scraping
+
 4.  Visual representations and some analysis
+    -  [06_plotting](06_plotting.md): Fist tweet series of plots
