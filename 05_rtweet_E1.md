@@ -2,20 +2,20 @@ By Rodrigo Esteves de Lima Lopes *University of Campinas* [rll307\@unicamp.br](m
 
 ------------------------------------------------------------------------
 
-# My first Twitter data scrape
+# My first Twitter data scraping
 
 # Introduction
 
-Our main objective here is to have first contact with a network data scraping package. In this case, `rtweet`. Twitter has been one of the oldest surviving social media, and it also has been an important source for data in the last few years. But please, take into account that the data we collect might be influenced by a number of factors:
+Our main objective here is to have a first contact with a data scraping package. In this case, `rtweet`. Twitter has been one of the oldest surviving social media, and it also has been an important source for data in the last few years. But please, take into account that the data we collect might be influenced by a number of factors:
 
-1.  My location: Twitter's algorithm is known to change the results depending of our location
-2.  A different kind of account (professional, personal or premium) offers different results in terms of how many of twitters we my get
+1.  Twitter's algorithm is known to change the results depending of our location
+2.  A different kind of account (professional, personal or premium) offers different results
 3.  Our Internet band might influence the results
 
 ## What are we going to need
 
 1.  A valid [Twitter](https://twitter.com/) account
-2.  The package [rtweet](https://github.com/ropensci/rtweet)
+2.  The Package [rtweet](https://github.com/ropensci/rtweet) for data scraping
 
 ### Responsible data use
 
@@ -43,7 +43,7 @@ If we have a close look, `my.trends <- trends_available()` delivers a table with
 SP.trends <- get_trends(woeid = 455827)
 ```
 
-Again we have a table. But please, mind you it is a snapshot of Twitter at the moment data was collected, it tends to change, sometimes, by the minute.
+Again we have a table. But please, mind you it is a snapshot of Twitter at the moment data were collected, it tends to change, sometimes, by the minute.
 
 ## Getting some tweets
 
