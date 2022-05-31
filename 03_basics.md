@@ -198,7 +198,7 @@ These commands taught us a couple of things:
 
 -   "=" is also possible, but "\<-" is a better choice because
     1.  "=" is already present inside some commands, so "\<-" is exclusive of variable attribution
-    2.  "\<-" brings us some direction regarding the attribution
+    2.  "\<-" represents the direction of an attribution
 
 1.  There are some kinds of data in R, the basic ones are:
 
