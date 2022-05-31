@@ -1,8 +1,7 @@
-# IDE (Integrated Development Environment)
+By Rodrigo Esteves de Lima Lopes *University of Campinas* [rll307\@unicamp.br](mailto:rll307@unicamp.br)
 
-Rodrigo Esteves de Lima Lopes\
-*Campinas State University*\
-[rll307\@unicamp.br](mailto:rll307@unicamp.br)
+------------------------------------------------------------------------
+# IDE (Integrated Development Environment)
 
 R is a fascinating piece of software, but it does not bring much of an interface for its users. As we can see in the picture below, R is not very friendly:
 
