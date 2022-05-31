@@ -8,13 +8,13 @@ By Rodrigo Esteves de Lima Lopes *University of Campinas* [rll307\@unicamp.br](m
 
 # Introduction
 
-In this workshop [Marcelo Buzato](mailto:mbuzato@unicamp.br) and [I](mailto:rll307@unicamp.br) are going to discuss some strategies of Twitter text analysis. It was produced in order to assist colleagues who work in the area of Corpus Linguistics and Systemic Functional Linguistics, as a way to use R in their research. It is part of my [CNPq](http://www.cnpq.br) - project and seeks to make corpus tools and `R` accessible.
+In this workshop [Marcelo Buzato](mailto:mbuzato@unicamp.br) and [I](mailto:rll307@unicamp.br) are going to discuss some strategies of Twitter text analysis. It was produced in order to assist colleagues who work in the area of Corpus Linguistics and Systemic Functional Linguistics. It is part of my [CNPq](http://www.cnpq.br) - project and seeks to make corpus tools and `R` accessible.
 
-Please feel free to help in the codes and tutorial improvement. If you see any mistake or possibility for code rewriting, please let us know.
+Please feel free to tell us your opinion  regarding the codes and some tutorial improvement.
 
 # Contents
 
-This course covers some tools for corpus and discourse analysis using **R**'s language and packages. It is intended to be a hands-on introduction, so some important issues might be left behind due to lack of time.
+This workshop is intended to be a hands-on introduction, so some important issues might be left behind due to lack of time.
 
 ## Scripts
 
@@ -31,10 +31,13 @@ Each markdown file (*\*.md*) brings a set of comments and commands regarding par
 2.  Brief introduction to `R` syntax
 
     -   [03_basics](03_basics.md): Some basic R Syntax
+      -   [03_basics.R](03_basics.R): Scprit in R language
 
 3.  Collecting and saving Twitter data
 
     -   [05_rtweet_E1](05_rtweet_E1.md): Data scraping
+      -   [05_rtweet_E1.R](05_rtweet_E1.R): Scprit in R language
 
 4.  Visual representations and some analysis
     -  [06_plotting](06_plotting.md): Fist tweet series of plots
+      -   [06_plotting.R](06_plotting.R): Scprit in R language
