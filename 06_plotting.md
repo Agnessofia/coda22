@@ -8,7 +8,7 @@ By Rodrigo Esteves de Lima Lopes *Campinas University* [rll307\@unicamp.br](mail
 
 Our may objective here is to plot the results we collected last script. The grammar of plotting might be a bit overwhelming, but keep in mind it is just a small introduction. 
 
-In this tutorial we use [`ggplot2`](https://ggplot2.tidyverse.org/index.html), a common package for plotting in R. Other packages should do the job, but `ggplot2` is the most popular across `R` users. The Package [Dplyr](https://dplyr.tidyverse.org/) might be necessary for data manipulation. 
+In this tutorial we use [`ggplot2`](https://ggplot2.tidyverse.org/index.html), a package for plotting in R. Other packages should do the job, but `ggplot2` is the most popular across `R` users. The Package [Dplyr](https://dplyr.tidyverse.org/) might be necessary for data manipulation. 
 
 # Now let us plot the frequency
 
