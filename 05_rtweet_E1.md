@@ -37,13 +37,13 @@ First we are going to get some insights on what is trending in our location. So 
 all.trends <- trends_available()
 ```
 
-If we have a close look, `my.trends <- trends_available()` delivers a table with numbers, cities and countries. Please, mind you that some locations might not be listed. In this case, I would choose your countries location. I am from São Paulo - Brazil, so I will try to get the trends available there. If we look at the table, São Paulo's ID is `455827`. So we will get the trends by using this ID.
+If we have a close look, `my.trends <- trends_available()` delivers a table with numbers, cities and countries. Please, mind you that some locations might not be listed. I am from São Paulo - Brazil, so I will try to get the trends available there. If we look at the table, São Paulo's ID is `455827`. So we will get the trends by using this ID.
 
 ``` r
 SP.trends <- get_trends(woeid = 455827)
 ```
 
-Again we have a table. But please, mind you it is a snapshot of Twitter at the moment data were collected, it tends to change, sometimes, by the minute.
+Again we have a table. It is a snapshot of Twitter at the moment data were collected, it tends to change, sometimes, by the minute.
 
 ## Getting some tweets
 
