@@ -8,7 +8,6 @@ library(ggplot2)
 all.trends <- trends_available()
 SP.trends <- get_trends(woeid = 455827)
 
-
 # getting some tweets -----------------------------------------------------
 #Option 1
 
