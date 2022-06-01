@@ -1,4 +1,4 @@
-![Lula](images/lula.png)By Rodrigo Esteves de Lima Lopes *Campinas University* [rll307\@unicamp.br](mailto:rll307@unicamp.br)
+By Rodrigo Esteves de Lima Lopes *Campinas University* [rll307\@unicamp.br](mailto:rll307@unicamp.br)
 
 ------------------------------------------------------------------------
 
