@@ -27,6 +27,7 @@ Loading the package:
 
 ``` r
 library(rtweet)
+library(ggplot2)
 ```
 
 ## Twitter locations
