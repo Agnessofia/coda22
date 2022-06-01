@@ -3,7 +3,6 @@ By Rodrigo Esteves de Lima Lopes *University of Campinas* [rll307\@unicamp.br](m
 ------------------------------------------------------------------------
 
 # Comparing Tweets
-
 ## Introduction
 
 In this tutorial we will discuss how to make an initial exploration on Twitter textual data. Here we intend to perform an exploratory analysis of the text scraped from each candidates' timeline. 
