@@ -29,9 +29,11 @@ Each markdown file (*\*.md*) brings a set of comments and commands regarding par
     -   [03_basics.R](03_basics.R): Script in R language
 3.  Collecting and saving Twitter data
     -   [05_rtweet_E1](05_rtweet_E1.md): Data scraping
-    -   [05_rtweet_E1.R](05_rtweet_E1.R): Scprit in R language
+    -   [05_rtweet_E1.R](05_rtweet_E1.R): Script in R language
     -   [07_rtweet_E2](07_rtweet_E2.md): Processing Wordlists
     -   [07_rtweet_E2.R](07_rtweet_E2.R): Script in R language
+    -   [09_quanteda_E3](09_quanteda_E3.md): Comparison amongst candidates
+    -   [09_quanteda_E3.R](09_quanteda_E3.R): Script in R language
 4.  Visual representations and some analysis
     -   [06_plotting](06_plotting.md): First tweet series of plots
     -   [06_plotting.R](06_plotting.R): Script in R language
