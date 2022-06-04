@@ -126,7 +126,7 @@ JB.col |> View()
 ciro |> View()
 ```
 
-Our nest step is to compare the candidates. We will select them by pairs, so we can observe their most relevant words":
+Our nest step is to compare the candidates. We will select them by pairs, so we can observe their most relevant words:
 
 ``` r
 a.lula_Ciro <- corpus_subset(presidents.C, screen_name != "jairbolsonaro")
