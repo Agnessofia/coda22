@@ -34,8 +34,14 @@ Each markdown file (*\*.md*) brings a set of comments and commands regarding par
     -   [07_rtweet_E2.R](07_rtweet_E2.R): Script in R language
     -   [09_quanteda_E3](09_quanteda_E3.md): Comparison amongst candidates
     -   [09_quanteda_E3.R](09_quanteda_E3.R): Script in R language
+    -   [11_quanteda_E4](11_quanteda_E4.md): Analysing networks
+    -   [11_quanteda_E4.R](11_quanteda_E4.R): Script in R language
 4.  Visual representations and some analysis
     -   [06_plotting](06_plotting.md): First tweet series of plots
     -   [06_plotting.R](06_plotting.R): Script in R language
     -   [08_plotting](08_plotting.md): First word plotting
     -   [08_plotting.R](08_plotting.R): Script in R language
+    -   [10_plotting](10_plotting.md): Candidates comparison
+    -   [10_plotting.R](10_plotting.R): Script in R language
+    -   [12_plotting](12_plotting.md): Analysing networks
+    -   [12_plotting.R](12_plotting.R): Script in R language
