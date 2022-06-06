@@ -124,3 +124,11 @@ presidents <- get_timelines(c("jairbolsonaro",
                               "cirogomes"),
                             n = 3200)
 ```
+
+
+Now let us save our data outside R, if I want to analyse the texts in other software:
+
+```r
+presidets.save  <- data.frame(lapply(presidents, as.character), stringsAsFactors=FALSE)
+write.csv(presidets.save, "presidents.csv")
+```

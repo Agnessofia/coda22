@@ -113,6 +113,8 @@ presidents %>%
     caption = "\nSource: Data collected from Twitter's REST API via rtweet"
   )
 
+presidets.save  <- data.frame(lapply(presidents, as.character), stringsAsFactors=FALSE)
+write.csv(presidets.save, "presidents.csv")
 
 
 
