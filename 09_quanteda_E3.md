@@ -85,6 +85,8 @@ JB.toc <- tokens_remove(JB.toc,
 
 ```
 
+# Concordances 
+
 `Quanteda` allows us to make concordances. Let us see a little of `Kwic`.
 
 ``` r
@@ -92,6 +94,8 @@ kwic(JB.toc,"Brasil") |> View()
 kwic(lula.toc,"Brasil") |> View()
 kwic(ciro.toc,"Brasil") |> View()
 ```
+
+# Bigrams
 
 How about to analyse how bigrams are in each corpus? This will help us to understand the general aboutness of the texts.
 
@@ -126,6 +130,8 @@ JB.col |> View()
 ciro |> View()
 ```
 
+# Comparing and Plotting
+
 Our nest step is to compare the candidates. We will select them by pairs, so we can observe their most relevant words:
 
 ``` r
@@ -134,7 +140,8 @@ b.lula_JB <- corpus_subset(presidents.C, screen_name != "cirogomes")
 c.ciro_JB <- corpus_subset(presidents.C, screen_name != "LulaOficial")
 ```
 
-The comparison and plotting
+
+Plotting: 
 
 ``` r
 # Lula vs ciro

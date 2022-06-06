@@ -58,7 +58,6 @@ kwic(lula.toc,"Brasil") |> View()
 kwic(ciro.toc,"Brasil") |> View()
 
 #Bigrams
-
 lula.col <- textstat_collocations(lula.toc, method = "lambda",
                                   size = 2,
                                   min_count = 2,
@@ -136,7 +135,6 @@ textstat_keyness(dfm.c,
                  measure = "lr") |> 
   textplot_keyness(n= 25)
 
-####
 
 
 
