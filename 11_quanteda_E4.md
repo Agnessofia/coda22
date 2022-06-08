@@ -30,7 +30,7 @@ library(quanteda.textstats)
 
 ### Words
 
-Out first step is to take our corpus tokens and create a DFM (document-feature matrix). A DFM tells us which features occurs more frequently in a set of documents:
+Out first step is to take our corpus tokens and create a DFM (document-feature matrix). A DFM tells us the frequency of features in a set of documents:
 
 ![Example of DFM](https://i.stack.imgur.com/4iFzH.png)
 
@@ -38,7 +38,7 @@ Out first step is to take our corpus tokens and create a DFM (document-feature m
 Lula.dfm <- dfm(lula.toc)
 ```
 
-A consequence of working with small texts is a lot of zeros in our matrix, resulting in a very sparse set of data.
+A consequence of working with small texts is a lot of zeros in our matrix, a very sparse data set.
 
 Unfortunately, due to time and processing issues we will not analyse all words in any candidates tweets, only a small sample. So it makes sense to sample the most frequent words:
 
