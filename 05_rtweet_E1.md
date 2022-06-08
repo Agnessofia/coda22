@@ -6,7 +6,7 @@ By Rodrigo Esteves de Lima Lopes *University of Campinas* [rll307\@unicamp.br](m
 
 # Introduction
 
-Our main objective here is to have a first contact with a data scraping package. In this case, `rtweet`. Twitter has been one of the oldest surviving social media, and it also has been an important source for data in the last few years. But please, take into account that the data we collect might be influenced by a number of factors:
+Our main objective is to have a first contact with a data scraping package. In this case, `rtweet`. Twitter has been one of the oldest surviving social media, and it also has been an important source for data in the last few years. But please, take into account that the data we collect might be influenced by a number of factors:
 
 1.  Twitter's algorithm is known to change the results depending of our location
 2.  A different kind of account (professional, personal or premium) offers different results
@@ -38,7 +38,7 @@ First we are going to get some insights on what is trending in our location. So 
 all.trends <- trends_available()
 ```
 
-If we have a close look, `my.trends <- trends_available()` delivers a table with numbers, cities and countries. Please, mind you that some locations might not be listed. I am from São Paulo - Brazil, so I will try to get the trends available there. If we look at the table, São Paulo's ID is `455827`. So we will get the trends by using this ID.
+If we have a close look, `my.trends <- trends_available()` delivers a table with numbers, cities and countries. I am from São Paulo - Brazil, so I will try to get the trends available there. If we look at the table, São Paulo's ID is `455827`. So we will get the trends by using this ID.
 
 ``` r
 SP.trends <- get_trends(woeid = 455827)
@@ -55,8 +55,8 @@ In my data, the term **URSS** called my attention, so I will search for it. Ther
 
 ### stream_tweets
 
--   **Advantages**: it collects as much tweets as possible in a given period of time
--   **Disadvantages**: it tends to get connection and parsing errors when we search for long periods of time. There is a function called recover_stream.R, written by [Johannes Gruber](https://github.com/JBGruber) (who we are quite deeply thankful) and available [here](https://gist.github.com/JBGruber), that might sort the problem most sometimes. But *most* means: if our file is too much damaged, it will not work as we've intend.
+-   **Advantages**: it collects as much tweets as possible in a given period of time.
+-   **Disadvantages**: it tends to get connection and parsing errors when we search for long periods of time. There is a function called recover_stream.R, written by [Johannes Gruber](https://github.com/JBGruber) (who we are quite deeply thankful) and available [here](https://gist.github.com/JBGruber), that might sort out the problem sometimes. However, if our file is too damaged, it may not work.
 
 Let us make some search using `stream_tweets`:
 
@@ -67,7 +67,7 @@ stream_tweets('URSS',
                        parse=FALSE)
 ```
 
-Now to load this tweets we will need the following command:
+Now we will need the following commandto load this tweets:
 
 ``` r
 my.tweets <- parse_stream("t01.json")
@@ -77,7 +77,7 @@ If we look at this file, there is a lot of possible variables to explore, over 9
 
 ### search_tweets()
 
--   **Advantages**: it collects a large number of tweets. Always returns nice parsed files.
+-   **Advantages**: always returns nice parsed files.
 -   **Disadvantages**: if you do not have a researcher or premium account, number of instances might be limited.
 
 Due to time, we will search for some tweets only:
@@ -86,8 +86,6 @@ Due to time, we will search for some tweets only:
 my.Tweets2 <- search_tweets(
   "URSS", n = 1000, include_rts = TRUE)
 ```
-
-## Some bonus features
 
 Let us get the timeline form a politician:
 
@@ -108,7 +106,7 @@ boulos.flw2 <- boulos.flw[1:100,]
 info <- lookup_users(boulos.flw2$user_id)
 ```
 
-Let us get some users who have tweeted about our search term:
+Getting some users who have tweeted about our search term:
 
 ``` r
 users <- search_users("URSS", n = 1000)
