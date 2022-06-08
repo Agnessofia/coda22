@@ -29,7 +29,7 @@ We are going to use the same data we have used in the previous tutorial
 
 ## Corpus creation
 
-Our first step is to use `Quanteda` to create corpus. A corpus in this context is an specialised format for the text to interact with the package.
+Our first step is to use `Quanteda` to create corpus. A corpus in this context is an formal variable thata allows the text to interact with the package.
 
 ``` r
 presidents.C <- corpus(presidents)
