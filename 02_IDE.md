@@ -15,7 +15,7 @@ Mostly, it is a blank window with a cursor and some technical information. There
 
 ![R in a native IDE](./images/R02.png)
 
-This is why most R users need an *Integrated Development Environment*, or IDE for short. This sort of application makes it possible for users to access many functions that are hidden inside R. Other advantages are the syntax highlighting and easier package installation and a richer interface. The interface takes us to a more comfortable navigation, as a 'click on' action might now replace some commands.
+This is why most R users need an *Integrated Development Environment*, or IDE for short. This sort of application makes it possible for users to access many functions that are hidden inside R. Other advantages are the syntax highlighting and easier package installation and a richer interface. The interface takes us to a more comfortable navigation, as a 'click' might replace some commands.
 
 Here I will do a brief review of some of the IDEs available. During our workshop, please, feel free to use one you see fit.
 
