@@ -55,7 +55,7 @@ RStudio is my IDE of choice. There is a massive community of RStudio users, plea
 
 ### Pycharm
 
-[PyCharm](https://www.jetbrains.com/pycharm/) is an IDE initially developed for Python. However, it brings a friendly [R plugin support](https://www.jetbrains.com/help/pycharm/r-plugin-support.html). It offers all function that RStudio does, but with a little difference, [PyCharm](https://www.jetbrains.com/pycharm/) is project-oriented. It means that you have to create a code project and assign it to a directory in order to make it work. In practical terms, it creates a virtual environment inside the designated directory, using a little bit more of space and it does not run files which are not related to a project.
+[PyCharm](https://www.jetbrains.com/pycharm/) is an IDE initially developed for Python. However, it brings a friendly [R plugin support](https://www.jetbrains.com/help/pycharm/r-plugin-support.html). It offers all functions that RStudio does, but with a little difference, [PyCharm](https://www.jetbrains.com/pycharm/) is project-oriented. It means that you have to create a project and assign it to a directory in order to make it work. In practical terms, it creates a virtual environment and it does not run files which are not related to a project.
 
 ![PyCharm Example](https://resources.jetbrains.com/help/img/idea/2020.2/py_r_overview.png)
 
@@ -85,7 +85,7 @@ There are some IDEs that are meant to write notebooks. Mostly for publishing or 
 
 ## RStudio
 
-RStudio might be useful for creating notebooks for studying and further publishing of code. However, to use such a feature, you will have to learn some markdown. Markdown is a language for text formatting quite simple and effective. This tutorial is written in Rmarkdown, a variety of markdown applied to R.
+RStudio might be useful for creating notebooks for studying and further publishing of code. However, to use such a feature, you will have to learn some markdown. Markdown is a language for text formatting quite simple and effective. This tutorial was written in Rmarkdown, a variety of markdown applied to R.
 
 Please, for further information on the topic:
 
@@ -98,14 +98,14 @@ You will see that Rmarkdown can write a series of complex documents, using the v
 
 ### Jupyter notebooks
 
-[Jupyter Notebook](https://jupyter.org/) is an IDE for note-taking and code publishing. It works as an editor in your browser and creates HTML outputs which might have consulted or changed latter. It works with a variety of programming languages.
+[Jupyter Notebook](https://jupyter.org/) is an IDE for note-taking and code publishing. It works as an editor in your browser and creates HTML outputs which might have of use for personal reference or even for publishing. It works with a variety of programming languages.
 
 ![Jupyter Notebook example](images/binder-50.png)
 
-The installation of [Jupyter](https://jupyter.org/) is a bit complex, but the tools might worth the effort.
+The installation of [Jupyter](https://jupyter.org/) is a bit complex, but it might worth the effort.
 
 1.  Download and install the latest version of [Python](https://www.python.org/) for your system
-2.  Open a terminal (yes, we are going to use it for installing and starting the programme latter)
+2.  Open a terminal (yes, we are going to use it)
 3.  Run `Python -m pip install --upgrade`
 4.  Run `pip install jupyterlab`
 5.  Run `jupyter notebook` to start [Jupyter](https://jupyter.org/) for the first time
