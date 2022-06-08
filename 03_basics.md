@@ -6,7 +6,7 @@ By Rodrigo Esteves de Lima Lopes *University of Campinas* [rll307\@unicamp.br](m
 
 ## Introduction
 
-In this tutorial we will try to do get some introductory concepts on R language, mostly getting some basic conventions. Please run the [script](03_basics.R) on this notebook.
+In this tutorial we will try to establish a common ground on R language and some basic conventions. Please run the [script](03_basics.R) on this notebook.
 
 # Some very basic stuff
 
