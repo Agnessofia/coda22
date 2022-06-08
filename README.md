@@ -8,9 +8,9 @@ By Rodrigo Esteves de Lima Lopes *University of Campinas* [rll307\@unicamp.br](m
 
 # Introduction
 
-In this workshop [Marcelo Buzato](mailto:mbuzato@unicamp.br) and [I](mailto:rll307@unicamp.br) are going to discuss some strategies of Twitter text analysis. It was produced in order to assist colleagues who work in the area of Corpus Linguistics and Systemic Functional Linguistics. It is part of my [CNPq](http://www.cnpq.br) - project and seeks to make corpus tools and `R` accessible.
+In this workshop [Marcelo Buzato](mailto:mbuzato@unicamp.br) and I ([Rodrigo de Lima-Lopes](mailto:rll307@unicamp.br)) are going to discuss some strategies of Twitter text analysis. It is part of my [CNPq](http://www.cnpq.br) - project and seeks to make corpus tools and `R` accessible.
 
-Please feel free to tell us your opinion regarding the codes and some tutorial improvement.
+Please feel free to tell us your opinion regarding the codes and tutorial. If you think some improvement is necessary, please let us know.
 
 # Contents
 
