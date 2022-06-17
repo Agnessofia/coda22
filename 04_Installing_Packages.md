@@ -1,4 +1,4 @@
-by Rodrigo Esteves de Lima Lopes *University of Campinas*  rll307\@unicamp.br](mailto:rll307@unicamp.br)
+by Rodrigo Esteves de Lima Lopes *University of Campinas*  [rll307\@unicamp.br](mailto:rll307@unicamp.br)
 
 ------------------------------------------------------------------------
 
