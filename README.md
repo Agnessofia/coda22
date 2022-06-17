@@ -6,6 +6,7 @@ By Rodrigo Esteves de Lima Lopes *University of Campinas* [rll307\@unicamp.br](m
   <img src="images/flyer2.jpeg" />
 </p>
 
+[Versão em português disponível](https://github.com/rll307/WorkshopTwitter2022_PTBR)
 # Introduction
 
 In this workshop [Marcelo Buzato](mailto:mbuzato@unicamp.br) and I ([Rodrigo de Lima-Lopes](mailto:rll307@unicamp.br)) are going to discuss some strategies of Twitter text analysis. It is part of my [CNPq](http://www.cnpq.br) - project and seeks to make corpus tools and `R` accessible.
