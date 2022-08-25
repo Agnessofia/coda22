@@ -16,7 +16,7 @@ This workshop is intended to be a hands-on introduction, so some important issue
 
 Each markdown file (*\*.md*) brings a set of comments and commands regarding part of this workshop, while `R` files (*\*.R*) are the actual scripts for the exercises we are going to perform.
 
-The blueprints cover the instalation of the necessary software (which needs to be done **before the workshop**) and the excercices we are going to discuss. 
+The blueprints cover the instalation of the necessary software (which needs to be done ***before the workshop***) and the excercices we are going to discuss. 
 
 1.  Brief introduction to R IDE
     -   [01_R.md](01_R.md): Installation of R
