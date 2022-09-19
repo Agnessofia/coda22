@@ -3,6 +3,7 @@ writeLines("It is part of my CNPq-funded project and seeks to make corpus tools 
 # Packages ----------------------------------------------------------------
 library(rtweet)
 library(ggplot2)
+library(dplyr)
 
 # Doing research on topics--------------------------------------------------
 all.trends <- trends_available()
