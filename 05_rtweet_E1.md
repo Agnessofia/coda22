@@ -41,7 +41,7 @@ First we are going to get some insights on what is trending in our location. So 
 all.trends <- trends_available()
 ```
 
-If we have a close look, `my.trends <- trends_available()` delivers a table with numbers, cities and countries. I am in Santiago - Chile, so I will try to get the trends available there. If we look at the table, Santiago's ID is `455827`. So we will get the trends by using this ID.
+If we have a close look, `my.trends <- trends_available()` delivers a table with numbers, cities and countries. I am in Santiago - Chile, so I will try to get the trends available there. If we look at the table, Santiago's ID is `349859`. So we will get the trends by using this ID.
 
 ``` r
 Santigo.trends <- get_trends(woeid = 349859)

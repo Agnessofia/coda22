@@ -5,7 +5,7 @@ library(rtweet)
 auth_setup_default()
 library(ggplot2)
 library(dplyr)
-#options(scipen=999)
+options(scipen=999)
 # Doing research on topics--------------------------------------------------
 all.trends <- trends_available()
 Santigo.trends <- get_trends(woeid = 349859)
