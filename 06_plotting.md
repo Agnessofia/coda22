@@ -6,99 +6,81 @@ By Rodrigo Esteves de Lima Lopes *Campinas University* [rll307\@unicamp.br](mail
 
 # Introduction
 
-Our may objective here is to plot the results we collected last script. The grammar of plotting might be a bit overwhelming, but keep in mind it is just a small introduction. 
+Our may objective here is to plot the results we collected last script. The grammar of plotting might be a bit overwhelming, but keep in mind it is just a small introduction.
 
-In this tutorial we use [`ggplot2`](https://ggplot2.tidyverse.org/index.html), a package for plotting in R. Other packages should do the job, but `ggplot2` is the most popular across `R` users. The Package [Dplyr](https://dplyr.tidyverse.org/) might be necessary for data manipulation. 
+In this tutorial we use [`ggplot2`](https://ggplot2.tidyverse.org/index.html), a package for plotting in R. Other packages should do the job, but `ggplot2` is the most popular across `R` users. The Package [Dplyr](https://dplyr.tidyverse.org/) might be necessary for data manipulation.
 
 # Now let us plot the frequency
 
 The basic, one plot for all:
 
 ``` r
-presidents %>% ts_plot("month", trim = 7L)
+gabrielboric %>% ts_plot("month", trim = 7L)
+sebastianpinera %>% ts_plot("month", trim = 7L)
 ```
 
-![Tweets in a single hand](images/t01.png)
+![Boric's tweets](images/t01.png)
 
-`ts_plot()` is part of `rtweet`. It "borrows" some elements from `ggplot2` in order to plots frequency of tweets as time series. It is possible to make the visual representation a bit more sophisticated by providing multiple text-based filters to subset data. It is also possible to plot  multiple time series.
+![Piñeda's tweets](images/t02.png)
 
-As we can see, this image does not give us much information about the tweets. So let us make the plot a bit more complex, now considering each candidate:
+`ts_plot()` is part of `rtweet`. It "borrows" some elements from `ggplot2` in order to plots frequency of tweets as time series. It is possible to make the visual representation a bit more sophisticated by providing multiple text-based filters to subset data. It is also possible to plot multiple time series.
 
-**Jair Bolsonaro**
+As we can see, this image does not give us much information about the tweets. So let us make the plot a bit more complex, now considering each president:
+
+**Sebastian Piñera**
 
 ``` r
 presidents %>%
   dplyr::filter(created_at > "2022-01-01") %>%
-  dplyr::filter(screen_name == "jairbolsonaro") %>%
+  dplyr::filter(screen_name == "sebastianpinera") %>%
   ts_plot("day", trim = 7L) +
   ggplot2::geom_point(color = "black",shape=21,fill="blue",size = 3) +
   ggplot2::geom_line(color = "blue")+
   ggplot2::theme_minimal() +
   ggplot2::labs(
     x = NULL, y = NULL,
-    title = "Frequency of Twitter statuses posted by Jair Bolsonaro",
+    title = "Frequency of Twitter statuses posted by Sebastian Piñera",
     subtitle = "Twitter status (tweet) counts aggregated by day from January 2022",
     caption = "\nSource: Data collected from Twitter's REST API via rtweet"
   )
 ```
 
-![Tweets by Bolsonaro](images/T2.png)
+![Tweets by Piñera](images/t04.png)
 
-**Ciro Gomes**
-
-``` r
-presidents %>%
-  dplyr::filter(created_at > "2022-01-01") %>%
-  dplyr::filter(screen_name == "cirogomes") %>%
-  ts_plot("day", trim = 7L) +
-  ggplot2::geom_point(color = "black",shape=21,fill="darkgreen",size = 3) +
-  ggplot2::geom_line(color = "darkgreen")+
-  ggplot2::theme_minimal() +
-  ggplot2::labs(
-    x = NULL, y = NULL,
-    title = "Frequency of Twitter statuses posted by Ciro Gomes",
-    subtitle = "Twitter status (tweet) counts aggregated by day from January 2022",
-    caption = "\nSource: Data collected from Twitter's REST API via rtweet"
-  )
-```
-
-![Tweets by Gomes](images/t3.png)
-
-**Lula**
+**Gabriel Boric**
 
 ``` r
 presidents %>%
   dplyr::filter(created_at > "2022-01-01") %>%
-  dplyr::filter(screen_name == "LulaOficial") %>%
+  dplyr::filter(screen_name == "gabrielboric") %>%
   ts_plot("day", trim = 7L) +
   ggplot2::geom_point(color = "black",shape=21,fill="red",size = 3) +
   ggplot2::geom_line(color = "red")+
   ggplot2::theme_minimal() +
   ggplot2::labs(
     x = NULL, y = NULL,
-    title = "Frequency of Twitter statuses posted by Lula",
+    title = "Frequency of Twitter statuses posted by Gabriel Boric",
     subtitle = "Twitter status (tweet) counts aggregated by day from January 2022",
     caption = "\nSource: Data collected from Twitter's REST API via rtweet"
   )
 ```
 
-![Tweets by Lula](images/t4.png)
+![Tweets by Boric](images/t03.png)
 
 In the commands above, a number of filters and new criteria changed the way data was represented. In a nutshell we:
 
-1. chose a single candidate
-1. set a data form the timeline to start
-1. set a colour for each candidate
-1. set the size
-
+1.  chose a single candidate
+2.  set a data form the timeline to start
+3.  set a colour for each candidate
+4.  set the size
 
 Now, let us plot all the presidents in a single command:
 
 ``` r
 presidents %>%
-  dplyr::filter(created_at > "2021-08-01") %>%
+  dplyr::filter(created_at > "2022-01-01") %>%
   dplyr::group_by(screen_name) %>%
-  ts_plot("day", trim = 7L) +
+  ts_plot("day", trim = 15L) +
   ggplot2::geom_point(size = 3, aes(shape = factor(screen_name),color = factor(screen_name))) +
   ggplot2::theme_minimal() +
   ggplot2::theme(
@@ -107,20 +89,20 @@ presidents %>%
     plot.title = ggplot2::element_text(face = "bold")) +
   ggplot2::labs(
     x = NULL, y = NULL,
-    title = "Frequency of Twitter statuses posted by Brazilian Presidential Pre-Candidates",
+    title = "Frequency of Twitter statuses posted by Chilean Presidentss",
     subtitle = "Twitter status (tweet) counts aggregated by date",
     caption = "\nSource: Data collected from Twitter's REST API via rtweet"
   )
 ```
 
-![All pre-candidates](images/all.png)
+![Boric and Piñera](images/t05.png)
 
 In a nutshell we:
 
-1. chose all candidates
-1. grouped the occurrences by screen name
-1. set a data form the timeline to start
-1. set a colour and shape for each candidate
-1. set the size
+1.  chose all candidates
+2.  grouped the occurrences by screen name
+3.  set a data form the timeline to start
+4.  set a colour and shape for each candidate
+5.  set the size
 
 Which conclusions can we get?
