@@ -61,7 +61,7 @@ R is a good arithmetic tool. If we type the following lines in our script and ru
     ## [1] 2950
 
 ``` r
-x <- 2L
+x <- 2
 x
 ```
 

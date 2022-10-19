@@ -25,7 +25,7 @@ writeLines("It is part of my CNPq-funded project and seeks to make corpus tools 
 
 (300 * 9) + (500 / 2)
 
-x <- 2L
+x <- 2
 x
 typeof(x)
 
