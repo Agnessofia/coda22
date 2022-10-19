@@ -27,8 +27,10 @@ Loading the package:
 
 ``` r
 library(rtweet)
+auth_setup_default()
 library(ggplot2)
 library(dplyr)
+options(scipen=999)
 ```
 
 ## Twitter locations
@@ -39,17 +41,17 @@ First we are going to get some insights on what is trending in our location. So 
 all.trends <- trends_available()
 ```
 
-If we have a close look, `my.trends <- trends_available()` delivers a table with numbers, cities and countries. I am from São Paulo - Brazil, so I will try to get the trends available there. If we look at the table, São Paulo's ID is `455827`. So we will get the trends by using this ID.
+If we have a close look, `my.trends <- trends_available()` delivers a table with numbers, cities and countries. I am in Santiago - Chile, so I will try to get the trends available there. If we look at the table, Santiago's ID is `455827`. So we will get the trends by using this ID.
 
 ``` r
-SP.trends <- get_trends(woeid = 455827)
+Santigo.trends <- get_trends(woeid = 349859)
 ```
 
 Again we have a table. It is a snapshot of Twitter at the moment data were collected, it tends to change, sometimes, by the minute.
 
 ## Getting some tweets
 
-In my data, the term **URSS** called my attention, so I will search for it. There are two ways to do so:
+In my data, the term **18DeOctubre** called my attention, so I will search for it. There are two ways to do so:
 
 1.  `stream_tweets()`: searches tweets for a given period of time.
 2.  `search_tweets()`: searches tweets until it gets specified number of tweets.
@@ -62,7 +64,7 @@ In my data, the term **URSS** called my attention, so I will search for it. Ther
 Let us make some search using `stream_tweets`:
 
 ``` r
-stream_tweets('URSS', 
+stream_tweets('18DeOctubre', 
                        timeout = 60, #in seconds
                        file_name='t01', # it saves a the tweets in a file
                        parse=FALSE)
@@ -71,7 +73,7 @@ stream_tweets('URSS',
 Now we will need the following commandto load this tweets:
 
 ``` r
-my.tweets <- parse_stream("t01.json")
+my.tweets <- parse_stream("t01")
 ```
 
 If we look at this file, there is a lot of possible variables to explore, over 90 columns with a lot of information regarding our tweets.
@@ -85,32 +87,32 @@ Due to time, we will search for some tweets only:
 
 ``` r
 my.Tweets2 <- search_tweets(
-  "URSS", n = 1000, include_rts = TRUE)
+  "18DeOctubre", n = 1000, include_rts = TRUE)
 ```
 
 Let us get the timeline form a politician:
 
 ``` r
-boulos <-  get_timeline("GuilhermeBoulos",n=1000)
+gabrielboric <- get_timeline("gabrielboric", n = 1000)
 ```
 
 Let us get his followers
 
 ``` r
-boulos.flw <- get_followers("GuilhermeBoulos", n = 75000)
+gabrielboric.flw <- get_followers("gabrielboric", n = 1000)
 ```
 
 Now let us get some information regarding some of those followers
 
 ``` r
-boulos.flw2 <- boulos.flw[1:100,]
-info <- lookup_users(boulos.flw2$user_id)
+gabrielboric.flw2 <- gabrielboric.flw[1:100,]
+info <- lookup_users(gabrielboric.flw2$from_id)
 ```
 
 Getting some users who have tweeted about our search term:
 
 ``` r
-users <- search_users("URSS", n = 1000)
+users <- search_users("18DeOctubre", n = 1000)
 ```
 
 # Timelines
@@ -118,16 +120,23 @@ users <- search_users("URSS", n = 1000)
 Let us get the timelines for the some possible candidates in the next Brazilian's elections:
 
 ``` r
-presidents <- get_timelines(c("jairbolsonaro",
-                              "LulaOficial",
-                              "cirogomes"),
-                            n = 3200)
+gabrielboric <- get_timeline("gabrielboric", n = 3000)
+sebastianpinera <- get_timeline("sebastianpinera", n = 3000)
 ```
 
+Our next step is identifying the origin of each president:
+
+``` r
+gabrielboric$screen_name <- "gabrielboric"
+sebastianpinera$screen_name <- "sebastianpinera"
+```
+
+Merging all data, so I can save and use it
 
 Now let us save our data outside R, if I want to analyse the texts in other software:
 
-```r
+``` r
+
 presidets.save  <- data.frame(lapply(presidents, as.character), stringsAsFactors=FALSE)
 write.csv(presidets.save, "presidents.csv")
 ```
@@ -137,90 +146,72 @@ write.csv(presidets.save, "presidents.csv")
 The basic, one plot for all:
 
 ``` r
-presidents %>% ts_plot("month", trim = 7L)
+gabrielboric %>% ts_plot("month", trim = 7L)
+sebastianpinera %>% ts_plot("month", trim = 7L)
 ```
 
-![Tweets in a single hand](images/t01.png)
+![Boric's tweets](images/t01.png)
 
-`ts_plot()` is part of `rtweet`. It "borrows" some elements from `ggplot2` in order to plots frequency of tweets as time series. It is possible to make the visual representation a bit more sophisticated by providing multiple text-based filters to subset data. It is also possible to plot  multiple time series.
+![Piñeda's tweets](images/t02.png)
+
+`ts_plot()` is part of `rtweet`. It "borrows" some elements from `ggplot2` in order to plot frequency of tweets as time series. It is possible to make the visual representation a bit more sophisticated by providing multiple text-based filters to subset data. It is also possible to plot multiple time series.
 
 As we can see, this image does not give us much information about the tweets. So let us make the plot a bit more complex, now considering each candidate:
 
-**Jair Bolsonaro**
+**Gabriel Boric**
 
 ``` r
 presidents %>%
   dplyr::filter(created_at > "2022-01-01") %>%
-  dplyr::filter(screen_name == "jairbolsonaro") %>%
-  ts_plot("day", trim = 7L) +
-  ggplot2::geom_point(color = "black",shape=21,fill="blue",size = 3) +
-  ggplot2::geom_line(color = "blue")+
-  ggplot2::theme_minimal() +
-  ggplot2::labs(
-    x = NULL, y = NULL,
-    title = "Frequency of Twitter statuses posted by Jair Bolsonaro",
-    subtitle = "Twitter status (tweet) counts aggregated by day from January 2022",
-    caption = "\nSource: Data collected from Twitter's REST API via rtweet"
-  )
-```
-
-![Tweets by Bolsonaro](images/T2.png)
-
-**Ciro Gomes**
-
-``` r
-presidents %>%
-  dplyr::filter(created_at > "2022-01-01") %>%
-  dplyr::filter(screen_name == "cirogomes") %>%
-  ts_plot("day", trim = 7L) +
-  ggplot2::geom_point(color = "black",shape=21,fill="darkgreen",size = 3) +
-  ggplot2::geom_line(color = "darkgreen")+
-  ggplot2::theme_minimal() +
-  ggplot2::labs(
-    x = NULL, y = NULL,
-    title = "Frequency of Twitter statuses posted by Ciro Gomes",
-    subtitle = "Twitter status (tweet) counts aggregated by day from January 2022",
-    caption = "\nSource: Data collected from Twitter's REST API via rtweet"
-  )
-```
-
-![Tweets by Gomes](images/t3.png)
-
-**Lula**
-
-``` r
-presidents %>%
-  dplyr::filter(created_at > "2022-01-01") %>%
-  dplyr::filter(screen_name == "LulaOficial") %>%
+  dplyr::filter(screen_name == "gabrielboric") %>%
   ts_plot("day", trim = 7L) +
   ggplot2::geom_point(color = "black",shape=21,fill="red",size = 3) +
   ggplot2::geom_line(color = "red")+
   ggplot2::theme_minimal() +
   ggplot2::labs(
     x = NULL, y = NULL,
-    title = "Frequency of Twitter statuses posted by Lula",
+    title = "Frequency of Twitter statuses posted by Gabriel Boric",
     subtitle = "Twitter status (tweet) counts aggregated by day from January 2022",
     caption = "\nSource: Data collected from Twitter's REST API via rtweet"
   )
 ```
 
-![Tweets by Lula](images/t4.png)
+![Tweets by Boric](images/t03.png)
+
+**Sebastian Piñera**
+
+``` r
+presidents %>%
+  dplyr::filter(created_at > "2022-01-01") %>%
+  dplyr::filter(screen_name == "sebastianpinera") %>%
+  ts_plot("day", trim = 7L) +
+  ggplot2::geom_point(color = "black",shape=21,fill="blue",size = 3) +
+  ggplot2::geom_line(color = "blue")+
+  ggplot2::theme_minimal() +
+  ggplot2::labs(
+    x = NULL, y = NULL,
+    title = "Frequency of Twitter statuses posted by Sebastian Piñera",
+    subtitle = "Twitter status (tweet) counts aggregated by day from January 2022",
+    caption = "\nSource: Data collected from Twitter's REST API via rtweet"
+  )
+```
+
+![Tweets by Piñera](images/t04.png)
 
 In the commands above, a number of filters and new criteria changed the way data was represented. In a nutshell we:
 
-1. chose a single candidate
-1. set a data form the timeline to start
-1. set a colour for each candidate
-1. set the size
-
+1.  chose a single candidate
+2.  set a data form the timeline to start
+3.  set a colour for each candidate
+4.  set the size
 
 Now, let us plot all the presidents in a single command:
 
 ``` r
 presidents %>%
-  dplyr::filter(created_at > "2021-08-01") %>%
+  dplyr::filter(created_at > "2022-01-01") %>%
   dplyr::group_by(screen_name) %>%
-  ts_plot("day", trim = 7L) +
+  ts_plot("day", trim = 15L) +
   ggplot2::geom_point(size = 3, aes(shape = factor(screen_name),color = factor(screen_name))) +
   ggplot2::theme_minimal() +
   ggplot2::theme(
@@ -229,20 +220,20 @@ presidents %>%
     plot.title = ggplot2::element_text(face = "bold")) +
   ggplot2::labs(
     x = NULL, y = NULL,
-    title = "Frequency of Twitter statuses posted by Brazilian Presidential Pre-Candidates",
+    title = "Frequency of Twitter statuses posted by Chilean Presidentss",
     subtitle = "Twitter status (tweet) counts aggregated by date",
     caption = "\nSource: Data collected from Twitter's REST API via rtweet"
   )
 ```
 
-![All pre-candidates](images/all.png)
+![Boric and Piñera](images/t05.png)
 
 In a nutshell we:
 
-1. chose all candidates
-1. grouped the occurrences by screen name
-1. set a data form the timeline to start
-1. set a colour and shape for each candidate
-1. set the size
+1.  chose all candidates
+2.  grouped the occurrences by screen name
+3.  set a data form the timeline to start
+4.  set a colour and shape for each candidate
+5.  set the size
 
 Which conclusions can we get?
