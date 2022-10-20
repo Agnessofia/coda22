@@ -12,93 +12,67 @@ In this tutorial we use [`ggplot2`](https://ggplot2.tidyverse.org/index.html), a
 
 Plotting:
 
+## Boric
 ``` r
-textplot_network(Lula.top.fcm, 
+textplot_network(gabrielboric.top.fcm, 
                  min_freq = 0.1, 
                  edge_alpha = 0.5, 
                  edge_size = 5,
                  edge_color = 'red')
 ```
 
-![Lula's 30 most frequent words](images/LulaWords.png)
+![Boric's most common words](images/BoricWordNet.png)
+
 
 ``` r
-textplot_network(Lula.top.hash, 
+textplot_network(gabrielboric.top.hash, 
                  min_freq = 0.1, 
                  edge_alpha = 0.5, 
                  edge_size = 5,
                  edge_color = 'red')
 ```
 
-![Lula's most common hashtags](images/LulaHash.png)
+![Boric's most common hashtags](images/BoricHash.png)
+
 
 ``` r
-textplot_network(Lula.top.handles, 
+textplot_network(gabrielboric.top.handles, 
                  min_freq = 0.1, 
                  edge_alpha = 0.5, 
                  edge_size = 5,
                  edge_color = 'red')
-                 
 ```
 
-![Lula's most quoted and re-tweeted handles](images/LulaHandles.png)
 
-``` r
-textplot_network(Ciro.top.fcm, 
+![Boric's most quoted and re-tweeted handles](images/BoricHandles.png)
+
+## Piñeda
+
+```r
+textplot_network(sebastianpinera.top.fcm, 
                  min_freq = 0.1, 
                  edge_alpha = 0.5, 
                  edge_size = 5,
                  edge_color = 'darkgreen')
 ```
 
-![Ciro Gome's most common words](images/CiroWords.png)
+![Piñedas most common words](images/PinedaWordNet.png)
 
-``` r
-textplot_network(Ciro.top.hash, 
+```r
+textplot_network(sebastianpinera.top.hash, 
                  min_freq = 0.1, 
                  edge_alpha = 0.5, 
                  edge_size = 5,
                  edge_color = 'darkgreen')
 ```
 
-![Ciro Gome's most common hashtags](images/CiroHash.png)
+![Piñedas most common hashtags](images/PinedaHash.png)
 
-``` r
-textplot_network(Ciro.top.handles, 
+```r
+textplot_network(sebastianpinera.top.handles, 
                  min_freq = 0.1, 
                  edge_alpha = 0.5, 
                  edge_size = 5,
                  edge_color = 'darkgreen')
 ```
-
-![Ciro Gome's most quoted/re-tweeted handles](images/CiroHandles.png)
-
-``` r
-textplot_network(JB.top.fcm, 
-                 min_freq = 0.1, 
-                 edge_alpha = 0.5, 
-                 edge_size = 5,
-                 edge_color = 'blue')
-```
-
-![Jair Bolsonaro's most common words](images/JBWords.png)
-
-``` r
-textplot_network(JB.top.hash, 
-                min_freq = 0.1, 
-                edge_alpha = 0.5, 
-                edge_size = 5,
-                edge_color = 'blue')
-```
-
-![Jair Bolsonaro's most common hashtags](images/JBHash.png)
-
-``` r
-textplot_network(JB.top.handles, 
-                 min_freq = 0.1, 
-                 edge_alpha = 0.5, 
-                 edge_size = 5,
-                 edge_color = 'blue')
-```
-
-![Jair Bolsonaro's most quoted/re-tweeted handles](images/JBHandles.png)
+![Piñedas most common handles](images/PinedaHandles.png)
