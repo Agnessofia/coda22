@@ -10,63 +10,26 @@ Our may objective here is to plot the results we collected last script. The gram
 
 In this tutorial we use [`ggplot2`](https://ggplot2.tidyverse.org/index.html), a package for plotting in R. Other packages should do the job, but `ggplot2` is the most popular across `R` users.
 
-Plotting: 
+Plotting:
 
 ``` r
-# Lula vs ciro
-a.tk <- tokens(a.lula_Ciro,
+presidents.toc <- tokens(presidents.C,
                   remove_punct = TRUE,
                   remove_symbols = TRUE,
                   remove_numbers = TRUE,
                   verbose = TRUE) %>%
-  tokens_remove(pattern = stopwords("pt")) %>%
+  tokens_remove(pattern = my.stopwords) %>%
+  tokens_tolower() %>% 
   tokens_group(groups = screen_name)
 
-dfm.a <- dfm(a.tk, verbose = TRUE)
+dfm.pres <- dfm(presidents.toc, verbose = TRUE)
+```
 
-textstat_keyness(dfm.a,
-                 target = "LulaOficial",
-                 measure = "lr") |> 
-  textplot_keyness(n= 25)
-
-
-# Lula vs JB
-
-b.tk <- tokens(b.lula_JB,
-               remove_punct = TRUE,
-               remove_symbols = TRUE,
-               remove_numbers = TRUE,
-               verbose = TRUE) %>%
-  tokens_remove(pattern = stopwords("pt")) %>%
-  tokens_group(groups = screen_name)
-
-dfm.b <- dfm(b.tk, verbose = TRUE)
-
-textstat_keyness(dfm.b,
-                 target = "LulaOficial",
-                 measure = "lr") |> 
-  textplot_keyness(n= 25)
-
-# Ciro vs JB
-
-c.tk <- tokens(c.ciro_JB,
-               remove_punct = TRUE,
-               remove_symbols = TRUE,
-               remove_numbers = TRUE,
-               verbose = TRUE) %>%
-  tokens_remove(pattern = stopwords("pt")) %>%
-  tokens_group(groups = screen_name)
-
-dfm.c <- dfm(c.tk, verbose = TRUE)
-
-textstat_keyness(dfm.c,
-                 target = "cirogomes",
+``` r
+textstat_keyness(dfm.pres,
+                 target = "gabrielboric",
                  measure = "lr") |> 
   textplot_keyness(n= 25)
 ```
 
-![Lula vs Ciro](images/lulaVSciro.png)
-
-![Lula vs Bolsonaro](images/lulavsJB.png)
-
-![Ciro vs Bolsonaro](images/ciroVSjb.png)
+![Comparisson](images/Comparisson.png)

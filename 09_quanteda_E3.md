@@ -35,12 +35,11 @@ Our first step is to use `Quanteda` to create corpus. A corpus in this context i
 presidents.C <- corpus(presidents)
 ```
 
-Our next step is to create a corpus for each of the candidates we have scraped the timeline
+Our next step is to create a corpus for each of the presidents we have scraped the timeline
 
 ``` r
-lula.c <- corpus_subset(presidents.C, screen_name == "LulaOficial")
-ciro.c <- corpus_subset(presidents.C, screen_name == "cirogomes")
-JB.c <- corpus_subset(presidents.C, screen_name == "jairbolsonaro")
+gabrielboric.c <- corpus_subset(presidents.C, screen_name == "gabrielboric")
+sebastianpinera.c <- corpus_subset(presidents.C, screen_name == "sebastianpinera")
 ```
 
 # Tokenisation
@@ -48,51 +47,39 @@ JB.c <- corpus_subset(presidents.C, screen_name == "jairbolsonaro")
 Next we need to tokenise our data, so the package can identify each word as a unity of analysis.
 
 ``` r
-#Lula
-lula.toc <- tokens(lula.c,
+ # Boric
+gabrielboric.toc <- tokens(gabrielboric.c,
                    remove_punct = TRUE,
                    remove_symbols = TRUE,
                    remove_numbers = TRUE,
                    verbose = TRUE)
-lula.toc <- tokens_remove(lula.toc,
-                          stopwords("pt"),
+gabrielboric.toc <- tokens_remove(gabrielboric.toc,
+                          stopwords("es"),
                           valuetype = "fixed",
                           verbose = TRUE
                           ) %>% tokens_tolower()
 
-#Ciro
-ciro.toc <- tokens(ciro.c,
+#Piñeda
+sebastianpinera.toc <- tokens(sebastianpinera.c,
                    remove_punct = TRUE,
                    remove_symbols = TRUE,
                    remove_numbers = TRUE,
                    verbose = TRUE)
-ciro.toc <- tokens_remove(ciro.toc,
-                          stopwords("pt"),
+
+sebastianpinera.toc <- tokens_remove(sebastianpinera.toc,
+                          stopwords("es"),
                           valuetype = "fixed",
                           verbose = TRUE
                           ) %>% tokens_tolower()
-# JB
-JB.toc <- tokens(JB.c,
-                   remove_punct = TRUE,
-                   remove_symbols = TRUE,
-                   remove_numbers = TRUE,
-                   verbose = TRUE)
-JB.toc <- tokens_remove(JB.toc,
-                          stopwords("pt"),
-                          valuetype = "fixed",
-                          verbose = TRUE
-                        ) %>% tokens_tolower()
-
 ```
 
-# Concordances 
+# Concordances
 
 `Quanteda` allows us to make concordances. Let us see a little of `Kwic`.
 
 ``` r
-kwic(JB.toc,"Brasil") |> View()
-kwic(lula.toc,"Brasil") |> View()
-kwic(ciro.toc,"Brasil") |> View()
+kwic(gabrielboric.toc,"chile") |> View()
+kwic(sebastianpinera.toc,"chile") |> View()
 ```
 
 # Bigrams
@@ -100,21 +87,14 @@ kwic(ciro.toc,"Brasil") |> View()
 How about to analyse how bigrams are in each corpus? This will help us to understand the general aboutness of the texts.
 
 ``` r
-lula.col <- textstat_collocations(lula.toc, method = "lambda",
+gabrielboric.col <- textstat_collocations(gabrielboric.toc, method = "lambda",
                                   size = 2,
                                   min_count = 2,
                                   smoothing = 0.5,
                                   tolower = TRUE,
                                   verbose = TRUE)
 
-ciro.col <- textstat_collocations(ciro.toc, method = "lambda",
-                                  size = 2,
-                                  min_count = 2,
-                                  smoothing = 0.5,
-                                  tolower = TRUE,
-                                  verbose = TRUE)
-
-JB.col <- textstat_collocations(JB.toc, method = "lambda",
+sebastianpinera.col <- textstat_collocations(sebastianpinera.toc, method = "lambda",
                                   size = 2,
                                   min_count = 2,
                                   smoothing = 0.5,
@@ -125,79 +105,34 @@ JB.col <- textstat_collocations(JB.toc, method = "lambda",
 Let us see each of them:
 
 ``` r
-lula.col |> View()
-JB.col |> View()
-ciro |> View()
+View(gabrielboric.col)
+View(sebastianpinera.col)
 ```
 
 # Comparing and Plotting
 
-Our nest step is to compare the candidates. We will select them by pairs, so we can observe their most relevant words:
+Our nest step is to compare the candidates.
 
 ``` r
-a.lula_Ciro <- corpus_subset(presidents.C, screen_name != "jairbolsonaro")
-b.lula_JB <- corpus_subset(presidents.C, screen_name != "cirogomes")
-c.ciro_JB <- corpus_subset(presidents.C, screen_name != "LulaOficial")
-```
-
-
-Plotting: 
-
-``` r
-# Lula vs ciro
-a.tk <- tokens(a.lula_Ciro,
+presidents.toc <- tokens(presidents.C,
                   remove_punct = TRUE,
                   remove_symbols = TRUE,
                   remove_numbers = TRUE,
                   verbose = TRUE) %>%
-  tokens_remove(pattern = stopwords("pt")) %>%
+  tokens_remove(pattern = my.stopwords) %>%
+  tokens_tolower() %>% 
   tokens_group(groups = screen_name)
 
-dfm.a <- dfm(a.tk, verbose = TRUE)
+dfm.pres <- dfm(presidents.toc, verbose = TRUE)
+```
 
-textstat_keyness(dfm.a,
-                 target = "LulaOficial",
-                 measure = "lr") |> 
-  textplot_keyness(n= 25)
+Plotting:
 
-
-# Lula vs JB
-
-b.tk <- tokens(b.lula_JB,
-               remove_punct = TRUE,
-               remove_symbols = TRUE,
-               remove_numbers = TRUE,
-               verbose = TRUE) %>%
-  tokens_remove(pattern = stopwords("pt")) %>%
-  tokens_group(groups = screen_name)
-
-dfm.b <- dfm(b.tk, verbose = TRUE)
-
-textstat_keyness(dfm.b,
-                 target = "LulaOficial",
-                 measure = "lr") |> 
-  textplot_keyness(n= 25)
-
-# Ciro vs JB
-
-c.tk <- tokens(c.ciro_JB,
-               remove_punct = TRUE,
-               remove_symbols = TRUE,
-               remove_numbers = TRUE,
-               verbose = TRUE) %>%
-  tokens_remove(pattern = stopwords("pt")) %>%
-  tokens_group(groups = screen_name)
-
-dfm.c <- dfm(c.tk, verbose = TRUE)
-
-textstat_keyness(dfm.c,
-                 target = "cirogomes",
+``` r
+textstat_keyness(dfm.pres,
+                 target = "gabrielboric",
                  measure = "lr") |> 
   textplot_keyness(n= 25)
 ```
 
-![Lula vs Ciro](images/lulaVSciro.png)
-
-![Lula vs Bolsonaro](images/lulavsJB.png)
-
-![Ciro vs Bolsonaro](images/ciroVSjb.png)
+![Comparisson](images/Comparisson.png)
