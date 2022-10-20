@@ -89,7 +89,7 @@ presidents %>%
     plot.title = ggplot2::element_text(face = "bold")) +
   ggplot2::labs(
     x = NULL, y = NULL,
-    title = "Frequency of Twitter statuses posted by Chilean Presidentss",
+    title = "Frequency of Twitter statuses posted by Chilean Presidents",
     subtitle = "Twitter status (tweet) counts aggregated by date",
     caption = "\nSource: Data collected from Twitter's REST API via rtweet"
   )
