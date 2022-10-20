@@ -81,7 +81,7 @@ If we look at this file, there is a lot of possible variables to explore, over 9
 ### search_tweets()
 
 -   **Advantages**: always returns nice parsed files.
--   **Disadvantages**: if you do not have a researcher or premium account, number of instances might be limited.
+-   **Disadvantages**: if you do not have a researcher or premium account, number of instances might be limited (time and number).
 
 Due to time, we will search for some tweets only:
 
