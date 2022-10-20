@@ -7,39 +7,52 @@ library(tidytext)
 library(ggplot2)
 
 
-# Preparing the data ----------------------------------------------------------------
+# Preparing the stop words ----------------------------------------------------------------
 
-LI <- subset(presidents, screen_name == "LulaOficial")
-JB <- subset(presidents, screen_name == "jairbolsonaro")
-CG <- subset(presidents, screen_name == "cirogomes")
+my.stopwords <- data.frame(word = quanteda::stopwords("es"))
 
+# **Boric** ----------------------------------------------------------------
 
-my.stopwords <- data.frame(word = quanteda::stopwords("pt"))
-
-# **Lula** ----------------------------------------------------------------
-
-LI.w <- LI %>%
+gabrielboric.w <- gabrielboric %>%
   unnest_tokens(word, text) %>% # separates each word
   count(word, sort = TRUE) %>% # counts each word
   anti_join(my.stopwords, by= "word") %>% # delete stopwords
   mutate(freq = n / sum(n)) %>% # proportion (base 1)
   mutate_at(vars(-matches("word|n")),~ .x * 100)  # translates proportion to base 100
 
-# **Jair Bolsonaro**----------------------------------------------------------------
+# improving the stop word lists
 
-JB.w <- JB %>%
-  unnest_tokens(word, text) %>%
-  count(word, sort = TRUE) %>%
-  anti_join(my.stopwords, by= "word") %>%
-  mutate(freq = n / sum(n)) %>%
-  mutate_at(vars(-matches("word|n")),~ .x * 100)
+my.stopwords <- data.frame(word = c(quanteda::stopwords("es"),"rt","https","http", "t.co","s" ))
 
-# **Ciro Gomes** ----------------------------------------------------------------
+#running again
 
 
-CG.w <- CG %>%
-  unnest_tokens(word, text) %>%
-  count(word, sort = TRUE) %>%
-  anti_join(my.stopwords, by= "word") %>%
-  mutate(freq = n / sum(n)) %>%
-  mutate_at(vars(-matches("word|n")),~ .x * 100) 
+gabrielboric.w <- gabrielboric %>%
+  unnest_tokens(word, text) %>% # separates each word
+  count(word, sort = TRUE) %>% # counts each word
+  anti_join(my.stopwords, by= "word") %>% # delete stopwords
+  mutate(freq = n / sum(n)) %>% # proportion (base 1)
+  mutate_at(vars(-matches("word|n")),~ .x * 100)  # translates proportion to base 100
+
+
+# Piñeda ------------------------------------------------------------------
+
+sebastianpinera.w <- sebastianpinera %>%
+  unnest_tokens(word, text) %>% # separates each word
+  count(word, sort = TRUE) %>% # counts each word
+  anti_join(my.stopwords, by= "word") %>% # delete stopwords
+  mutate(freq = n / sum(n)) %>% # proportion (base 1)
+  mutate_at(vars(-matches("word|n")),~ .x * 100)  # translates proportion to base 100
+
+# improving the stop word lists
+
+my.stopwords <- data.frame(word = c(quanteda::stopwords("es"),"rt","https","http", "t.co","s","q", 'x' ))
+
+sebastianpinera.w <- sebastianpinera %>%
+  unnest_tokens(word, text) %>% # separates each word
+  count(word, sort = TRUE) %>% # counts each word
+  anti_join(my.stopwords, by= "word") %>% # delete stopwords
+  mutate(freq = n / sum(n)) %>% # proportion (base 1)
+  mutate_at(vars(-matches("word|n")),~ .x * 100)  # translates proportion to base 100
+
+
