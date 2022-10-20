@@ -59,7 +59,7 @@ In my data, the term **18DeOctubre** called my attention, so I will search for i
 ### stream_tweets
 
 -   **Advantages**: it collects as much tweets as possible in a given period of time.
--   **Disadvantages**: it tends to get connection and parsing errors when we search for long periods of time. There is a function called recover_stream.R, written by [Johannes Gruber](https://github.com/JBGruber) (who we are quite deeply thankful) and available [here](https://gist.github.com/JBGruber), that might sort out the problem sometimes. However, if our file is too damaged, it may not work.
+-   **Disadvantages**: *1)* It tends to get connection and parsing errors when we search for long periods of time. There is a function called recover_stream.R, written by [Johannes Gruber](https://github.com/JBGruber) (who we are quite deeply thankful) and available [here](https://gist.github.com/JBGruber), that might sort out the problem sometimes. However, if our file is too damaged, it may not work. *2)* This command may have some problems due to firewall policies or temporary unavailability of Twitter's API.
 
 Let us make some search using `stream_tweets`:
 
