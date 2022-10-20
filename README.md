@@ -43,3 +43,7 @@ The blueprints cover the instalation of the necessary software (which needs to b
     -   [10_plotting.R](10_plotting.R): Script in R language
     -   [12_plotting](12_plotting.md): Analysing networks
     -   [12_plotting.R](12_plotting.R): Script in R language
+    
+# Disclaimer
+
+Twitter changes its policies constantly. Please, review this code before using it. 
