@@ -129,6 +129,7 @@ Our next step is identifying the origin of each president:
 ``` r
 gabrielboric$screen_name <- "gabrielboric"
 sebastianpinera$screen_name <- "sebastianpinera"
+presidents <- rbind(gabrielboric,sebastianpinera)
 ```
 
 Merging all data, so I can save and use it
