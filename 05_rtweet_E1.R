@@ -1,58 +1,55 @@
 Este script foi elaborado pelo prof Dr. Rodrigo Esteves de Lima-Lopes, com a ajuda de Agnes Sofia Guimarães Cruz, doutoranda no programa de Linguística Aplicada da Universidade Estadual de Campinas(UNICAMP). 
 
 writeLines("It is part of my CNPq-funded project and seeks to make corpus tools and R accessible. If you have any doubts or wish to make any research contact please send me an email. Rodrigo de Lima-Lopes rll307@unicamp.br")
-
-# Packages ----------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+install.packages("rtweet")
 library(rtweet)
 auth_setup_default()
 library(ggplot2)
 library(dplyr)
 options(scipen=999)
-# Doing research on topics--------------------------------------------------
+-------------------------------------------------------------------------
+# Vamos pesquisar tendências em São Paulo?--------------------------------------------------
 all.trends <- trends_available()
 SaoPaulo.trends <- get_trends(woeid = 455827)
 
-# getting some tweets -----------------------------------------------------
-#Option 1
+# Agora é hora de coletar tweets! -----------------------------------------------------
+#Opção 1
 
-stream_tweets('06DeNovember',
-              timeout = 60, #in seconds
-              file_name='t01', # it saves a the tweets in a file
-              parse=FALSE)
+# Por tempo
 
-# For a given period of time
 my.Tweets <- parse_stream("t01")
 
-# By the number of tweets
+# Pelo número de tweets
 my.Tweets2 <- search_tweets(
   "06DeNovember", n = 1000, include_rts = TRUE)
 
-# Getting a timeline
-damaresalves <- get_timeline("damaresalves", n = 1000)
+# Vamos obter uma linha do tempo
+damaresalves <- get_timeline("DamaresAlves", n = 1000)
 
-# Getting the followers
-damaresalves.flw <- get_followers("damaresalves",
-                            verbose = TRUE,n = 1000)
+# Vamos ver os seguidores?
+damaresalves.flw <- get_followers("DamaresAlves",
+                                  verbose = TRUE,n = 1000)
 
-# Some information about the users
+# Informações sobre os usuários 
 damaresalves.flw2 <- damaresalves.flw[1:100,]
 info <- lookup_users(damaresalves.flw2$from_id)
 
-# users who tweet about a topic
-users <- search_users("06DeNovember", n = 1000)
+# aqui podemos escolher usuários que twittam sobre determinado tópico
+users <- search_users("família", n = 1000)
 
-# Comparing two politicians
-damaresalves <- get_timeline("damaresalves", n = 3000)
-terezacristina <- get_timeline("terezacristina", n = 3000)
+# Vamos comparar a timeline das duas senadoras eleitas
+damaresalves <- get_timeline("DamaresAlves", n = 3000)
+terezacristina <- get_timeline("TerezaCrisMS", n = 3000)
 
-# Identifying the origin of each president:
+# Vamos identificar cada senadora 
 
-damaresalves$screen_name <- "damaresalves"
-terezacristina$screen_name <- "terezacristina"
+damaresalves$screen_name <- "DamaresAlves"
+terezacristina$screen_name <- "TerezaCrisMS"
 
-# Merging
+# Vamos juntar
 
-senadoras <- rbind(damaresalves, tereza cristina)
+senadoras <- rbind(damaresalves, terezacristina)
 
 # Agora, vamos plotar as senadoras! 
 # Para isso, vamos um utilizar um comando muito simples: 
@@ -62,10 +59,10 @@ terezacristina %>% ts_plot("month", trim = 7L)
 
 # Agora, cada senadora
 # **Damares Alves**
-  
+
 senadoras %>%
   dplyr::filter(created_at > "2022-01-01") %>%
-  dplyr::filter(screen_name == "damaresalves") %>%
+  dplyr::filter(screen_name == "DamaresAlves") %>%
   ts_plot("day", trim = 7L) +
   ggplot2::geom_point(color = "black",shape=21,fill="red",size = 3) +
   ggplot2::geom_line(color = "red")+
@@ -80,20 +77,21 @@ senadoras %>%
 # **Tereza Cristina**
 senadoras %>%
   dplyr::filter(created_at > "2022-01-01") %>%
-  dplyr::filter(screen_name == "terezacristina") %>%
+  dplyr::filter(screen_name == "TerezaCrisMS") %>%
   ts_plot("day", trim = 7L) +
-  ggplot2::geom_point(color = "black",shape=21,fill="blue",size = 3) +
-  ggplot2::geom_line(color = "blue")+
+  ggplot2::geom_point(color = "black",shape=21,fill="red",size = 3) +
+  ggplot2::geom_line(color = "red")+
   ggplot2::theme_minimal() +
   ggplot2::labs(
     x = NULL, y = NULL,
     title = "Frequência de tweets de Tereza Cristina",
-    subtitle = "Informações agregadas por data",
+    subtitle = "Twitter status (tweet) counts aggregated by day from January 2022",
     caption = "\nSource: Data collected from Twitter's REST API via rtweet"
   )
 
 
-# The two
+
+# As duas
 senadoras %>%
   dplyr::filter(created_at > "2022-01-01") %>%
   dplyr::group_by(screen_name) %>%
@@ -113,11 +111,6 @@ senadoras %>%
 
 senadoras.save  <- data.frame(lapply(senadoras, as.character), stringsAsFactors=FALSE)
 write.csv(senadoras.save, "senadoras.csv")
-
-
-
-
-
 
 
 
