@@ -6,99 +6,78 @@ library(quanteda.textplots)
 library(quanteda.textstats)
 library(ggplot2)
 
-#Creating the corpus
-presidents.C <- corpus(presidents)
+
+#Vamos criar um corpus
+senadoras.C <- corpus(senadoras)
 
 # Which are the variables?
-head(docvars(presidents.C))
+head(docvars(senadoras.C))
 
-#Creating subcorpora
-gabrielboric.c <- corpus_subset(presidents.C, screen_name == "gabrielboric")
-sebastianpinera.c <- corpus_subset(presidents.C, screen_name == "sebastianpinera")
+#Vamos criar subcorpora
+damaresalves.c <- corpus_subset(senadoras.C, screen_name == "DamaresAlves")
+terezacristina.c <- corpus_subset(senadoras.C, screen_name == "TerezaCrisMS")
 
-# Tokenisation
-# Boric
-gabrielboric.toc <- tokens(gabrielboric.c,
-                   remove_punct = TRUE,
-                   remove_symbols = TRUE,
-                   remove_numbers = TRUE,
-                   verbose = TRUE)
-gabrielboric.toc <- tokens_remove(gabrielboric.toc,
-                          stopwords("es"),
-                          valuetype = "fixed",
-                          verbose = TRUE
-                          ) %>% tokens_tolower()
+# Tokenização
+# Damares Alves
+damaresalves.toc <- tokens(damaresalves.c,
+                           remove_punct = TRUE,
+                           remove_symbols = TRUE,
+                           remove_numbers = TRUE,
+                           verbose = TRUE)
+damaresalves.toc <- tokens_remove(damaresalves.toc,
+                                  stopwords("pt"),
+                                  valuetype = "fixed",
+                                  verbose = TRUE
+) %>% tokens_tolower()
 
-#Piñeda
-sebastianpinera.toc <- tokens(sebastianpinera.c,
-                   remove_punct = TRUE,
-                   remove_symbols = TRUE,
-                   remove_numbers = TRUE,
-                   verbose = TRUE)
+#Tereza Cristina
+terezacristina.toc <- tokens(terezacristina.c,
+                              remove_punct = TRUE,
+                              remove_symbols = TRUE,
+                              remove_numbers = TRUE,
+                              verbose = TRUE)
 
-sebastianpinera.toc <- tokens_remove(sebastianpinera.toc,
-                          stopwords("es"),
-                          valuetype = "fixed",
-                          verbose = TRUE
-                          ) %>% tokens_tolower()
+terezacristina.toc <- tokens_remove(terezacristina.toc,
+                                     stopwords("pt"),
+                                     valuetype = "fixed",
+                                     verbose = TRUE
+) %>% tokens_tolower()
 
 # Kwic
-kwic(gabrielboric.toc,"chile") |> View()
-kwic(sebastianpinera.toc,"chile") |> View()
+kwic(damaresalves.toc,"brasil") |> View()
+kwic(terezacristina.toc,"brasil") |> View()
 
 
 #Bigrams
-gabrielboric.col <- textstat_collocations(gabrielboric.toc, method = "lambda",
-                                  size = 2,
-                                  min_count = 2,
-                                  smoothing = 0.5,
-                                  tolower = TRUE,
-                                  verbose = TRUE)
+damaresalves.col <- textstat_collocations(damaresalves.toc, method = "lambda",
+                                          size = 2,
+                                          min_count = 2,
+                                          smoothing = 0.5,
+                                          tolower = TRUE,
+                                          verbose = TRUE)
 
-sebastianpinera.col <- textstat_collocations(sebastianpinera.toc, method = "lambda",
-                                  size = 2,
-                                  min_count = 2,
-                                  smoothing = 0.5,
-                                  tolower = TRUE,
-                                  verbose = TRUE)
+terezacristina.col <- textstat_collocations(terezacristina.toc, method = "lambda",
+                                             size = 2,
+                                             min_count = 2,
+                                             smoothing = 0.5,
+                                             tolower = TRUE,
+                                             verbose = TRUE)
 # Let us see it
 
-View(gabrielboric.col)
-View(sebastianpinera.col)
+View(damaresalves.col)
+View(terezacristina.col)
 
 
-# Boric vs Piñeda
-presidents.toc <- tokens(presidents.C,
-                  remove_punct = TRUE,
-                  remove_symbols = TRUE,
-                  remove_numbers = TRUE,
-                  verbose = TRUE) %>%
+# Damares Alves vs Tereza Cristina
+senadoras.toc <- tokens(senadoras.C,
+                         remove_punct = TRUE,
+                         remove_symbols = TRUE,
+                         remove_numbers = TRUE,
+                         verbose = TRUE) %>%
   tokens_remove(pattern = my.stopwords) %>%
   tokens_tolower() %>% 
   tokens_group(groups = screen_name)
 
-dfm.pres <- dfm(presidents.toc, verbose = TRUE)
-
-# Now Plotting
-
-textstat_keyness(dfm.pres,
-                 target = "gabrielboric",
-                 measure = "lr") |> 
-  textplot_keyness(n= 25)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+dfm.sen <- dfm(senadoras.toc, verbose = TRUE)
 
 
