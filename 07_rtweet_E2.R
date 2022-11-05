@@ -7,13 +7,19 @@ library(tidytext)
 library(ggplot2)
 
 
-# Preparing the stop words ----------------------------------------------------------------
 
-my.stopwords <- data.frame(word = quanteda::stopwords("es"))
+library(dplyr)
+library(tidytext)
+library(ggplot2)
 
-# **Boric** ----------------------------------------------------------------
 
-gabrielboric.w <- gabrielboric %>%
+# Vamos preparar as stopwords ----------------------------------------------------------------
+
+my.stopwords <- data.frame(word = quanteda::stopwords("pt"))
+
+# **Damares Alves** ----------------------------------------------------------------
+
+damaresalves.w <- damaresalves %>%
   unnest_tokens(word, text) %>% # separates each word
   count(word, sort = TRUE) %>% # counts each word
   anti_join(my.stopwords, by= "word") %>% # delete stopwords
@@ -22,12 +28,11 @@ gabrielboric.w <- gabrielboric %>%
 
 # improving the stop word lists
 
-my.stopwords <- data.frame(word = c(quanteda::stopwords("es"),"rt","https","http", "t.co","s" ))
+my.stopwords <- data.frame(word = c(quanteda::stopwords("pt"),"rt","https","http", "t.co","s" ))
 
 #running again
 
-
-gabrielboric.w <- gabrielboric %>%
+damaresalves.w <- damaresalves %>%
   unnest_tokens(word, text) %>% # separates each word
   count(word, sort = TRUE) %>% # counts each word
   anti_join(my.stopwords, by= "word") %>% # delete stopwords
@@ -35,24 +40,52 @@ gabrielboric.w <- gabrielboric %>%
   mutate_at(vars(-matches("word|n")),~ .x * 100)  # translates proportion to base 100
 
 
-# Piñeda ------------------------------------------------------------------
+# Tereza Cristina ------------------------------------------------------------------
 
-sebastianpinera.w <- sebastianpinera %>%
+terezacristina.w <- terezacristina %>%
   unnest_tokens(word, text) %>% # separates each word
   count(word, sort = TRUE) %>% # counts each word
   anti_join(my.stopwords, by= "word") %>% # delete stopwords
   mutate(freq = n / sum(n)) %>% # proportion (base 1)
   mutate_at(vars(-matches("word|n")),~ .x * 100)  # translates proportion to base 100
 
-# improving the stop word lists
+# vamos melhorar nossa stop word lists
 
-my.stopwords <- data.frame(word = c(quanteda::stopwords("es"),"rt","https","http", "t.co","s","q", 'x' ))
+my.stopwords <- data.frame(word = c(quanteda::stopwords("pt"),"rt","https","http", "t.co","s","q", 'x' ))
 
-sebastianpinera.w <- sebastianpinera %>%
+terezacristina.w <- terezacristina %>%
   unnest_tokens(word, text) %>% # separates each word
   count(word, sort = TRUE) %>% # counts each word
   anti_join(my.stopwords, by= "word") %>% # delete stopwords
   mutate(freq = n / sum(n)) %>% # proportion (base 1)
   mutate_at(vars(-matches("word|n")),~ .x * 100)  # translates proportion to base 100
 
+# **Damares Alves**
 
+
+damaresalves.w  %>% 
+  slice(1:25) %>% 
+  ggplot(aes(x = reorder(word, n, function(n) -n), y = n)) + 
+  geom_bar(stat = "identity") + 
+  theme(axis.text.x = element_text(angle = 60, hjust = 1)) +
+  labs(
+    x = "Words", y = "Frequency",
+    title = "Frequência de palavras presentes nos tweets de Damares Alves",
+    subtitle = "Levantamento de publicações a partir de janeiro de 2022",
+    caption = "\nSource: Data collected from Twitter's REST API via rtweet"
+  )
+
+
+# **Tereza Cristina**
+
+terezacristina.w   %>% 
+  slice(1:25) %>% 
+  ggplot(aes(x = reorder(word, n, function(n) -n), y = n)) + 
+  geom_bar(stat = "identity") + 
+  theme(axis.text.x = element_text(angle = 60, hjust = 1)) +
+  labs(
+    x = "Words", y = "Frequency",
+    title = "Frequência de palavras presentes nos tweets de Tereza Cristina",
+    subtitle = "Levantamento de publicações a partir de janeiro de 2022",
+    caption = "\nSource: Data collected from Twitter's REST API via rtweet"
+  )
