@@ -11,11 +11,8 @@ all.trends <- trends_available()
 SaoPaulo.trends <- get_trends(woeid = 455827)
 
 # Agora é hora de coletar tweets! -----------------------------------------------------
+
 #Opção 1
-
-# Por tempo
-
-my.Tweets <- parse_stream("t01")
 
 # Pelo número de tweets
 my.Tweets2 <- search_tweets(
@@ -34,6 +31,8 @@ info <- lookup_users(damaresalves.flw2$from_id)
 
 # aqui podemos escolher usuários que twittam sobre determinado tópico
 users <- search_users("família", n = 1000)
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
 
 # Vamos comparar a timeline das duas senadoras eleitas
 damaresalves <- get_timeline("DamaresAlves", n = 3000)
@@ -57,6 +56,8 @@ terezacristina %>% ts_plot("month", trim = 7L)
 # primeiro, vamos olhar para cada uma das senadoras
 damaresalves %>% ts_plot("month", trim = 7L)
 terezacristina %>% ts_plot("month", trim = 7L)
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
 
 # Hora de melhorar os gráficos 
 
