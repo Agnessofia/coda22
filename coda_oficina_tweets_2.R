@@ -6,13 +6,6 @@ library(dplyr)
 library(tidytext)
 library(ggplot2)
 
-
-
-library(dplyr)
-library(tidytext)
-library(ggplot2)
-
-
 # Vamos preparar as stopwords ----------------------------------------------------------------
 
 my.stopwords <- data.frame(word = quanteda::stopwords("pt"))
@@ -26,11 +19,11 @@ damaresalves.w <- damaresalves %>%
   mutate(freq = n / sum(n)) %>% # proportion (base 1)
   mutate_at(vars(-matches("word|n")),~ .x * 100)  # translates proportion to base 100
 
-# improving the stop word lists
+# Aqui buscamos melhorar nossas stopwords
 
 my.stopwords <- data.frame(word = c(quanteda::stopwords("pt"),"rt","https","http", "t.co","s" ))
 
-#running again
+#vamos rodar novamente o código anterior:
 
 damaresalves.w <- damaresalves %>%
   unnest_tokens(word, text) %>% # separates each word
@@ -61,7 +54,6 @@ terezacristina.w <- terezacristina %>%
   mutate_at(vars(-matches("word|n")),~ .x * 100)  # translates proportion to base 100
 
 # **Damares Alves**
-
 
 damaresalves.w  %>% 
   slice(1:25) %>% 
